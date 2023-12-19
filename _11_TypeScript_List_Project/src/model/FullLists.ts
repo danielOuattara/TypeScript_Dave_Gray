@@ -1,6 +1,6 @@
 import ListItem from "./ListItem";
 
-interface List {
+interface ListInterface {
   list: ListItem[];
   load(): void;
   save(): void;
@@ -9,13 +9,13 @@ interface List {
   removeItem(id: string): void;
 }
 
-interface LocalItemType {
+interface LocalItemInterface {
   _id: string;
   _item: string;
   _checked: boolean;
 }
 
-export default class FullList implements List {
+export default class FullList implements ListInterface {
   static instance: FullList = new FullList();
 
   private constructor(private _list: ListItem[] = []) {}
@@ -28,10 +28,10 @@ export default class FullList implements List {
     const storedList: string | null = localStorage.getItem("myList");
     if (typeof storedList !== "string") return;
 
-    const parseList: LocalItemType[] = JSON.parse(storedList);
+    const parseStoredList: LocalItemInterface[] = JSON.parse(storedList);
 
-    parseList.forEach((item) => {
-      const newListItem = new ListItem(item._id, item._item, item._checked);
+    parseStoredList.forEach((item) => {
+      const newListItem = new ListItem(item._id, item._item);
       return FullList.instance.addItem(newListItem);
     });
   }

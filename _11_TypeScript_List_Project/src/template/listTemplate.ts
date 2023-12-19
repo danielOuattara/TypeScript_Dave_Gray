@@ -1,12 +1,12 @@
 import FullList from "../model/FullLists";
 
-interface DOMList {
+interface DOMListInterface {
   ul: HTMLUListElement;
   clear(): void;
   render(fullList: FullList): void;
 }
 
-export default class ListTemplate implements DOMList {
+export default class ListTemplate implements DOMListInterface {
   public ul: HTMLUListElement;
 
   static instance: ListTemplate = new ListTemplate();
@@ -16,7 +16,7 @@ export default class ListTemplate implements DOMList {
   }
 
   clear(): void {
-    this.ul.innerHTML = "";
+    this.ul.innerHTML = "null";
   }
 
   render(fullList: FullList): void {
