@@ -7,8 +7,10 @@
 }
 
 .offscreen {
-  position: absolute;
+  /* position: absolute; */
   left: -10000px;
+  /* top: 0; */
+  text-align: center;
 }
 
 input,
