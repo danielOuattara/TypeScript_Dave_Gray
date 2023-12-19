@@ -37,21 +37,21 @@ export default class FullList implements List {
   }
 
   save(): void {
-    return localStorage.setItem("myList", JSON.stringify(this._list));
+    localStorage.setItem("myList", JSON.stringify(this._list));
   }
 
   clearList(): void {
     this._list = [];
-    return this.save();
+    this.save();
   }
 
   addItem(item: ListItem): void {
     this._list.push(item);
-    return this.save();
+    this.save();
   }
 
   removeItem(id: string): void {
     this._list = this._list.filter((item) => item.id !== id);
-    return this.save();
+    this.save();
   }
 }
