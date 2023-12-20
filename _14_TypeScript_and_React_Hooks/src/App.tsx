@@ -6,6 +6,7 @@ import {
   KeyboardEvent,
   MouseEvent,
   useMemo,
+  useRef,
 } from "react";
 
 type User = {
@@ -106,6 +107,12 @@ function App() {
 
   const result3 = fibonacciFunction3(myNumber3);
 
+  //-----------------
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  console.log("inputRef?.current = ", inputRef?.current);
+  console.log("inputRef?.current?.value = ", inputRef?.current?.value);
+
   return (
     <div className="App">
       <section>
@@ -123,6 +130,10 @@ function App() {
       <h2>{result}</h2>
       <h2>{result2}</h2>
       <h2>{result3}</h2>
+
+      {/* ----------------- */}
+
+      <input type="text" ref={inputRef} />
     </div>
   );
 }
